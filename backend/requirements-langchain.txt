@@ -1,0 +1,19 @@
+# LangChain Dependencies for Enhanced AI Chat
+# Install with: pip install -r requirements-langchain.txt
+
+# Core LangChain
+langchain>=0.1.0
+langchain-core>=0.1.0
+
+# Google Generative AI Integration
+langchain-google-genai>=1.0.0
+
+# Memory and History Management
+langchain-community>=0.0.20
+
+# Optional: For advanced memory types
+# langchain-experimental>=0.0.50
+
+# Optional: For vector stores (if needed later)
+# chromadb>=0.4.0
+# faiss-cpu>=1.7.4
