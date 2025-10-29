@@ -1,0 +1,41 @@
+cooking_method,nutrient_type,retention_factor,description
+Raw,Protein,1.0,No cooking - 100% retention
+Raw,Carbohydrates,1.0,No cooking - 100% retention
+Raw,Fat,1.0,No cooking - 100% retention
+Raw,Vitamins,1.0,No cooking - 100% retention
+Raw,Minerals,1.0,No cooking - 100% retention
+Boiled,Protein,0.95,Minimal protein loss in boiling
+Boiled,Carbohydrates,0.98,Stable carbohydrates
+Boiled,Fat,0.90,Some fat may be lost to water
+Boiled,Vitamins,0.70,Water-soluble vitamins leach out
+Boiled,Minerals,0.85,Some minerals lost to cooking water
+Steamed,Protein,0.98,Excellent protein retention
+Steamed,Carbohydrates,0.99,Minimal carbohydrate loss
+Steamed,Fat,0.95,Good fat retention
+Steamed,Vitamins,0.85,Better than boiling for vitamins
+Steamed,Minerals,0.90,Minimal mineral loss
+Pressure Cooked,Protein,0.92,High heat may denature some protein
+Pressure Cooked,Carbohydrates,0.97,Stable under pressure
+Pressure Cooked,Fat,0.88,Some fat breakdown at high pressure
+Pressure Cooked,Vitamins,0.75,Heat-sensitive vitamins affected
+Pressure Cooked,Minerals,0.88,Some mineral loss to steam
+Fried,Protein,0.90,Protein denaturation from high heat
+Fried,Carbohydrates,0.95,Carbohydrates generally stable
+Fried,Fat,1.05,Additional fat from cooking oil
+Fried,Vitamins,0.60,Heat-sensitive vitamins destroyed
+Fried,Minerals,0.80,Some mineral loss
+Baked,Protein,0.93,Moderate protein retention
+Baked,Carbohydrates,0.96,Stable carbohydrates
+Baked,Fat,0.95,Good fat retention
+Baked,Vitamins,0.70,Heat affects some vitamins
+Baked,Minerals,0.85,Minimal mineral loss
+Grilled,Protein,0.88,High heat causes protein loss
+Grilled,Carbohydrates,0.94,Carbohydrates stable
+Grilled,Fat,0.85,Fat drips off during grilling
+Grilled,Vitamins,0.65,High heat destroys vitamins
+Grilled,Minerals,0.82,Some mineral loss
+Sauteed,Protein,0.95,Quick cooking preserves protein
+Sauteed,Carbohydrates,0.98,Minimal carbohydrate loss
+Sauteed,Fat,1.02,Slight increase from cooking oil
+Sauteed,Vitamins,0.80,Quick cooking preserves vitamins
+Sauteed,Minerals,0.90,Good mineral retention

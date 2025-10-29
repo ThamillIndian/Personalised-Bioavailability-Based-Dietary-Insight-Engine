@@ -1,0 +1,17 @@
+food_category,digestibility_factor,description
+Vegetables,0.85,Vegetables have good digestibility with fiber
+Grains,0.90,Grains are highly digestible when cooked
+Legumes,0.75,Legumes require proper cooking for digestibility
+Meat,0.95,Meat is highly digestible and bioavailable
+Dairy,0.92,Dairy products are easily digestible
+Fats,0.98,Fats are highly digestible
+Spices,0.60,Spices have low digestibility but high bioavailability
+Sweeteners,0.99,Sugars are almost completely digestible
+Liquids,0.99,Liquids are immediately available
+Nuts,0.70,Nuts require proper chewing and processing
+Fruits,0.88,Fruits are generally well digested
+Eggs,0.96,Eggs are highly digestible
+Fish,0.94,Fish is easily digestible
+Poultry,0.93,Poultry is highly digestible
+Mixed,0.80,Mixed foods have variable digestibility
+Unknown,0.75,Default digestibility for unknown categories

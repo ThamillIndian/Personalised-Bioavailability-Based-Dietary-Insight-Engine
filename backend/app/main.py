@@ -20,7 +20,7 @@ from app.utils.error_handlers import (
 from app.middleware.cors import setup_cors
 
 # Import routers
-from app.api.v1 import health, ingredients, recipes, favorites, chat
+from app.api.v1 import health, ingredients, recipes, favorites, chat, nutrition
 
 # Initialize logging
 setup_logging()
@@ -86,6 +86,7 @@ app.include_router(ingredients.router, prefix="/api/v1")
 app.include_router(recipes.router, prefix="/api/v1")
 app.include_router(favorites.router, prefix="/api/v1")
 app.include_router(chat.router, prefix="/api/v1")
+app.include_router(nutrition.router, prefix="/api/v1")
 
 
 @app.get("/")

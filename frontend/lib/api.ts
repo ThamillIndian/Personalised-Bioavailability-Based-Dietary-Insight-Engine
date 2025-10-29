@@ -95,6 +95,14 @@ export interface RecipeListResponse {
   total_pages: number
 }
 
+export interface PaginatedRecipeResponse {
+  recipes: FrontendRecipe[]
+  total: number
+  page: number
+  page_size: number
+  total_pages: number
+}
+
 export interface RatingRequest {
   recipe_id: string
   user_id: string
@@ -234,6 +242,11 @@ export const recipeApi = {
   },
 
   async getRecipes(page: number = 1, pageSize: number = 20): Promise<FrontendRecipe[]> {
+    const result = await recipeApi.getRecipesPaginated(page, pageSize)
+    return result.recipes
+  },
+
+  async getRecipesPaginated(page: number = 1, pageSize: number = 20): Promise<PaginatedRecipeResponse> {
     // Ensure pageSize doesn't exceed backend limit of 50
     const validPageSize = Math.min(pageSize, 50)
     const response = await apiRequest<RecipeListResponse>(
@@ -252,7 +265,13 @@ export const recipeApi = {
       })
     )
     
-    return recipesWithRatings
+    return {
+      recipes: recipesWithRatings,
+      total: response.total,
+      page: response.page,
+      page_size: response.page_size,
+      total_pages: response.total_pages
+    }
   },
 
   // Get recipe by ID (with caching)
@@ -526,4 +545,72 @@ export const healthApi = {
   }> {
     return apiRequest('/health')
   }
+}
+
+// Nutrition API Types
+export type StressLevel = "low" | "medium" | "high"
+export type CookingMethod = "Raw" | "Boiled" | "Steamed" | "Fried" | "Baked" | "Sauteed" | "Pressure Cooked"
+
+export interface BioavailabilityRequest {
+  ingredients: Array<{
+    name: string
+    quantity_g: number
+    category: string
+  }>
+  cooking_method: CookingMethod
+  stress_level: StressLevel
+  age: number
+  post_workout?: boolean
+  sleep_hours?: number
+  meal_time?: string
+  time_since_last_meal_min?: number
+  hydration_liters?: number
+  caffeine_mg?: number
+  menstrual_phase?: string
+}
+
+export interface BioavailabilityResponse {
+  success: boolean
+  base_nutrients: Record<string, number>
+  adjusted_nutrients: Record<string, number>
+  adjustment_factors: any
+}
+
+export interface RDACoverageRequest {
+  adjusted_nutrients: Record<string, number>
+  age: number
+  weight_kg: number
+  height_cm: number
+}
+
+export interface RDACoverageResponse {
+  success: boolean
+  rda_coverage: Record<string, string>
+  user_profile: any
+  recommendations: Array<{
+    nutrient: string
+    coverage: string
+    suggestions: {
+      high: string[]
+      medium: string[]
+    }
+  }>
+  recommendation_count: number
+}
+
+// Nutrition API Functions
+export const nutritionApi = {
+  async bioavailability(payload: BioavailabilityRequest): Promise<BioavailabilityResponse> {
+    return apiRequest<BioavailabilityResponse>('/nutrition/bioavailability', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    })
+  },
+
+  async rdaCoverage(payload: RDACoverageRequest): Promise<RDACoverageResponse> {
+    return apiRequest<RDACoverageResponse>('/nutrition/rda-coverage', {
+      method: 'POST',
+      body: JSON.stringify(payload),
+    })
+  },
 }

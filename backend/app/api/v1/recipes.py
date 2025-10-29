@@ -231,8 +231,12 @@ async def list_recipes(
                 if any(tag in [t.lower() for t in r.dietary_tags] for tag in tags)
             ]
         
+        # Show newest seeds first so recently added recipes appear on page 1
+        recipes = list(reversed(recipes))
+
         # Pagination
         total = len(recipes)
+        total_pages = (total + page_size - 1) // page_size  # Ceiling division
         start_idx = (page - 1) * page_size
         end_idx = start_idx + page_size
         paginated_recipes = recipes[start_idx:end_idx]
@@ -242,7 +246,8 @@ async def list_recipes(
             recipes=paginated_recipes,
             total=total,
             page=page,
-            page_size=page_size
+            page_size=page_size,
+            total_pages=total_pages
         )
         
     except Exception as e:

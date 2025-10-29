@@ -7,9 +7,10 @@ import { RecipeList } from "@/components/recipe-list"
 import { RecipeListWithMatch } from "@/components/recipe-list-with-match"
 import { ImageIngredientUploader } from "@/components/search/image-ingredient-uploader"
 import { useRecipes } from "@/hooks/use-recipes"
+import { recipeApi } from "@/lib/api"
 import { Button } from "@/components/ui/button"
 import { Alert, AlertDescription } from "@/components/ui/alert"
-import { Loader2, AlertCircle } from "lucide-react"
+import { Loader2, AlertCircle, ChevronLeft, ChevronRight } from "lucide-react"
 import type { RecipeSearchRequest } from "@/lib/api"
 import { analytics } from "@/lib/analytics"
 import { RecommendationEngine } from "@/lib/recommendations"
@@ -24,12 +25,55 @@ export default function SearchPage() {
   const [mode, setMode] = useState<"text" | "image">("text")
   const [chips, setChips] = useState<string[]>([]) // show extracted ingredients
   const [hasSearched, setHasSearched] = useState(false)
+  const [currentPage, setCurrentPage] = useState(1)
 
   // Use the recipes hook for API calls
   const { recipes: searchResults, recipeMatches, loading, error, searchRecipes, refetch } = useRecipes()
 
-  // Default recipes for initial load
-  const { recipes: defaultRecipes, loading: defaultLoading, error: defaultError } = useRecipes(1, 20)
+  // For paginated browsing when no search is active
+  const [paginatedData, setPaginatedData] = useState<{
+    recipes: any[]
+    total: number
+    page: number
+    page_size: number
+    total_pages: number
+  } | null>(null)
+  const [browseLoading, setBrowseLoading] = useState(true)
+  const [browseError, setBrowseError] = useState<string | null>(null)
+
+  // Load recipes for browsing (non-search mode)
+  const loadBrowsePage = useCallback(async (page: number) => {
+    setBrowseLoading(true)
+    setBrowseError(null)
+    try {
+      const result = await recipeApi.getRecipesPaginated(page, 18)
+      setPaginatedData(result)
+    } catch (err) {
+      setBrowseError(err instanceof Error ? err.message : 'Failed to load recipes')
+    } finally {
+      setBrowseLoading(false)
+    }
+  }, [])
+
+  // Load initial browse page
+  useEffect(() => {
+    if (!hasSearched) {
+      loadBrowsePage(currentPage)
+    }
+  }, [currentPage, hasSearched, loadBrowsePage])
+
+  // Handle page navigation
+  const handleNextPage = () => {
+    if (paginatedData && currentPage < paginatedData.total_pages) {
+      setCurrentPage(prev => prev + 1)
+    }
+  }
+
+  const handlePrevPage = () => {
+    if (currentPage > 1) {
+      setCurrentPage(prev => prev - 1)
+    }
+  }
 
   const performSearch = useCallback(async () => {
     // Check if we have any search criteria
@@ -123,10 +167,12 @@ export default function SearchPage() {
     return () => clearTimeout(timeoutId)
   }, [query, filters, performSearch])
 
-  // Use search results if we've searched, otherwise use default recipes
-  const displayRecipes = hasSearched ? searchResults : defaultRecipes
-  const isLoading = hasSearched ? loading : defaultLoading
-  const displayError = hasSearched ? error : defaultError
+  // Use search results if we've searched, otherwise use paginated browse data
+  const displayRecipes = hasSearched ? searchResults : (paginatedData?.recipes || [])
+  const isLoading = hasSearched ? loading : browseLoading
+  const displayError = hasSearched ? error : browseError
+  const canGoNext = !hasSearched && paginatedData && currentPage < paginatedData.total_pages
+  const canGoPrev = !hasSearched && currentPage > 1
 
   return (
     <main className="mx-auto max-w-6xl px-4 py-8">
@@ -223,10 +269,46 @@ export default function SearchPage() {
               Found {displayRecipes.length} recipes for "{query}"
             </div>
           )}
+          {!hasSearched && paginatedData && (
+            <div className="mb-4 text-sm text-muted-foreground">
+              Showing page {paginatedData.page} of {paginatedData.total_pages} ({paginatedData.total} total recipes)
+            </div>
+          )}
           {hasSearched && recipeMatches.length > 0 ? (
             <RecipeListWithMatch recipeMatches={recipeMatches} />
           ) : (
             <RecipeList recipes={displayRecipes} />
+          )}
+          
+          {/* Pagination Controls - Only show when browsing (not searching) */}
+          {!hasSearched && paginatedData && (
+            <div className="mt-6 flex items-center justify-center gap-4">
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handlePrevPage}
+                disabled={!canGoPrev}
+                className="gap-2"
+              >
+                <ChevronLeft className="h-4 w-4" />
+                Previous
+              </Button>
+              
+              <span className="text-sm text-muted-foreground">
+                Page {paginatedData.page} of {paginatedData.total_pages}
+              </span>
+              
+              <Button
+                variant="outline"
+                size="sm"
+                onClick={handleNextPage}
+                disabled={!canGoNext}
+                className="gap-2"
+              >
+                Next
+                <ChevronRight className="h-4 w-4" />
+              </Button>
+            </div>
           )}
         </div>
       )}

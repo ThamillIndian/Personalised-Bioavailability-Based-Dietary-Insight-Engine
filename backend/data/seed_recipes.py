@@ -934,5 +934,589 @@ SEED_RECIPES = [
         dietary_tags=["vegetarian", "gluten-free", "low-carb"],
         nutrition=NutritionInfo(calories=240, protein=14, carbs=18, fat=14, fiber=5, sodium=520)
     ),
+    
+    # Recipe 31: Paneer Butter Masala
+    Recipe(
+        id=uuid4(),
+        title="Paneer Butter Masala",
+        description="Creamy tomato-based curry with soft paneer cubes finished with butter",
+        cuisine_type="Indian",
+        difficulty="medium",
+        prep_time=15,
+        cook_time=25,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1604908176997-4310a94d860b",
+        ingredients=[
+            Ingredient(name="paneer", quantity=300, unit="g", is_critical=True, category="protein"),
+            Ingredient(name="tomato", quantity=400, unit="g", is_critical=True, category="vegetable"),
+            Ingredient(name="onion", quantity=1, unit="whole", category="vegetable"),
+            Ingredient(name="cream", quantity=100, unit="ml", category="dairy"),
+            Ingredient(name="butter", quantity=30, unit="g", category="dairy"),
+            Ingredient(name="garam masala", quantity=1, unit="tsp", category="spice"),
+            Ingredient(name="ginger", quantity=1, unit="tbsp", category="spice"),
+            Ingredient(name="garlic", quantity=3, unit="cloves", category="spice"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Sauté onions in butter; add ginger-garlic"),
+            RecipeInstruction(step_number=2, instruction="Add tomatoes and spices; cook until thick"),
+            RecipeInstruction(step_number=3, instruction="Blend to a smooth sauce and return to pan"),
+            RecipeInstruction(step_number=4, instruction="Add cream and paneer; simmer 5 minutes"),
+            RecipeInstruction(step_number=5, instruction="Finish with butter and garam masala"),
+        ],
+        dietary_tags=["vegetarian", "gluten-free"],
+        nutrition=NutritionInfo(calories=430, protein=18, carbs=20, fat=30, fiber=4, sodium=780)
+    ),
+
+    # Recipe 32: Dal Makhani
+    Recipe(
+        id=uuid4(),
+        title="Dal Makhani",
+        description="Slow-cooked black lentils and kidney beans finished with butter and cream",
+        cuisine_type="Indian",
+        difficulty="medium",
+        prep_time=10,
+        cook_time=60,
+        servings=6,
+        image_url="https://images.unsplash.com/photo-1640434913931-2d24d90228e1",
+        ingredients=[
+            Ingredient(name="black lentils (urad)", quantity=300, unit="g", is_critical=True, category="protein"),
+            Ingredient(name="kidney beans", quantity=50, unit="g", category="protein"),
+            Ingredient(name="tomato", quantity=300, unit="g", category="vegetable"),
+            Ingredient(name="butter", quantity=40, unit="g", category="dairy"),
+            Ingredient(name="cream", quantity=80, unit="ml", category="dairy"),
+            Ingredient(name="ginger", quantity=1, unit="tbsp", category="spice"),
+            Ingredient(name="garam masala", quantity=1, unit="tsp", category="spice"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Pressure cook lentils and beans until soft"),
+            RecipeInstruction(step_number=2, instruction="Cook tomato and spices in butter"),
+            RecipeInstruction(step_number=3, instruction="Combine with lentils and simmer 30 minutes"),
+            RecipeInstruction(step_number=4, instruction="Stir in cream and garam masala"),
+            RecipeInstruction(step_number=5, instruction="Simmer low until rich and creamy"),
+        ],
+        dietary_tags=["vegetarian", "gluten-free"],
+        nutrition=NutritionInfo(calories=360, protein=17, carbs=38, fat=14, fiber=12, sodium=620)
+    ),
+
+    # Recipe 33: Palak Paneer
+    Recipe(
+        id=uuid4(),
+        title="Palak Paneer",
+        description="Paneer simmered in a smooth spinach gravy with spices",
+        cuisine_type="Indian",
+        difficulty="easy",
+        prep_time=15,
+        cook_time=20,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1604908554027-183eb89c6bb7",
+        ingredients=[
+            Ingredient(name="spinach", quantity=400, unit="g", is_critical=True, category="vegetable"),
+            Ingredient(name="paneer", quantity=250, unit="g", is_critical=True, category="protein"),
+            Ingredient(name="onion", quantity=1, unit="whole", category="vegetable"),
+            Ingredient(name="tomato", quantity=1, unit="whole", category="vegetable"),
+            Ingredient(name="cream", quantity=50, unit="ml", category="dairy"),
+            Ingredient(name="garam masala", quantity=1, unit="tsp", category="spice"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Blanch spinach and blend to purée"),
+            RecipeInstruction(step_number=2, instruction="Sauté onion and tomato with spices"),
+            RecipeInstruction(step_number=3, instruction="Add spinach purée and simmer"),
+            RecipeInstruction(step_number=4, instruction="Add paneer cubes and cream; cook briefly"),
+            RecipeInstruction(step_number=5, instruction="Adjust seasoning and serve"),
+        ],
+        dietary_tags=["vegetarian", "gluten-free"],
+        nutrition=NutritionInfo(calories=320, protein=18, carbs=16, fat=22, fiber=6, sodium=560)
+    ),
+
+    # Recipe 34: Chole Masala
+    Recipe(
+        id=uuid4(),
+        title="Chole Masala",
+        description="Punjabi-style spicy chickpea curry",
+        cuisine_type="Indian",
+        difficulty="easy",
+        prep_time=10,
+        cook_time=30,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1589308078059-be1415eab4c3",
+        ingredients=[
+            Ingredient(name="chickpeas", quantity=500, unit="g", is_critical=True, category="protein"),
+            Ingredient(name="onion", quantity=2, unit="whole", category="vegetable"),
+            Ingredient(name="tomato", quantity=300, unit="g", category="vegetable"),
+            Ingredient(name="chole masala", quantity=2, unit="tbsp", category="spice"),
+            Ingredient(name="ginger", quantity=1, unit="tbsp", category="spice"),
+            Ingredient(name="garlic", quantity=4, unit="cloves", category="spice"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Sauté onions with ginger-garlic"),
+            RecipeInstruction(step_number=2, instruction="Add tomatoes and spice blend; cook down"),
+            RecipeInstruction(step_number=3, instruction="Add cooked chickpeas and simmer 15 minutes"),
+            RecipeInstruction(step_number=4, instruction="Crush a few chickpeas to thicken"),
+            RecipeInstruction(step_number=5, instruction="Finish with cilantro and lemon"),
+        ],
+        dietary_tags=["vegetarian", "vegan", "gluten-free"],
+        nutrition=NutritionInfo(calories=310, protein=14, carbs=46, fat=7, fiber=11, sodium=520)
+    ),
+
+    # Recipe 35: Aloo Gobi
+    Recipe(
+        id=uuid4(),
+        title="Aloo Gobi",
+        description="Dry stir-fry of cauliflower and potatoes with spices",
+        cuisine_type="Indian",
+        difficulty="easy",
+        prep_time=10,
+        cook_time=20,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1604908553868-5a7c233d6a94",
+        ingredients=[
+            Ingredient(name="cauliflower", quantity=500, unit="g", is_critical=True, category="vegetable"),
+            Ingredient(name="potato", quantity=300, unit="g", is_critical=True, category="vegetable"),
+            Ingredient(name="turmeric", quantity=0.5, unit="tsp", category="spice"),
+            Ingredient(name="cumin seeds", quantity=1, unit="tsp", category="spice"),
+            Ingredient(name="ginger", quantity=1, unit="tsp", category="spice"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Heat oil; splutter cumin and sauté ginger"),
+            RecipeInstruction(step_number=2, instruction="Add potatoes and cauliflower with spices"),
+            RecipeInstruction(step_number=3, instruction="Cover and cook until tender"),
+            RecipeInstruction(step_number=4, instruction="Uncover to crisp edges"),
+            RecipeInstruction(step_number=5, instruction="Finish with cilantro and lemon"),
+        ],
+        dietary_tags=["vegetarian", "vegan", "gluten-free", "low-carb"],
+        nutrition=NutritionInfo(calories=220, protein=7, carbs=30, fat=8, fiber=8, sodium=420)
+    ),
+
+    # Recipe 36: Bhindi Masala
+    Recipe(
+        id=uuid4(),
+        title="Bhindi Masala",
+        description="Okra stir-fried with onions, tomatoes, and spices",
+        cuisine_type="Indian",
+        difficulty="easy",
+        prep_time=10,
+        cook_time=15,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1624359136355-e1c5a7da5b1c",
+        ingredients=[
+            Ingredient(name="okra", quantity=400, unit="g", is_critical=True, category="vegetable"),
+            Ingredient(name="onion", quantity=1, unit="whole", category="vegetable"),
+            Ingredient(name="tomato", quantity=1, unit="whole", category="vegetable"),
+            Ingredient(name="coriander powder", quantity=1, unit="tsp", category="spice"),
+            Ingredient(name="turmeric", quantity=0.5, unit="tsp", category="spice"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Sauté okra separately until non-sticky"),
+            RecipeInstruction(step_number=2, instruction="Sauté onions and tomatoes with spices"),
+            RecipeInstruction(step_number=3, instruction="Combine okra and cook a few minutes"),
+            RecipeInstruction(step_number=4, instruction="Adjust seasoning"),
+            RecipeInstruction(step_number=5, instruction="Serve hot with roti"),
+        ],
+        dietary_tags=["vegetarian", "vegan", "gluten-free", "low-carb"],
+        nutrition=NutritionInfo(calories=190, protein=5, carbs=18, fat=9, fiber=6, sodium=380)
+    ),
+
+    # Recipe 37: Baingan Bharta
+    Recipe(
+        id=uuid4(),
+        title="Baingan Bharta",
+        description="Smoky roasted eggplant mash cooked with onions and tomatoes",
+        cuisine_type="Indian",
+        difficulty="easy",
+        prep_time=15,
+        cook_time=25,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1544025162-d76694265947",
+        ingredients=[
+            Ingredient(name="eggplant", quantity=600, unit="g", is_critical=True, category="vegetable"),
+            Ingredient(name="onion", quantity=1, unit="whole", category="vegetable"),
+            Ingredient(name="tomato", quantity=2, unit="whole", category="vegetable"),
+            Ingredient(name="garlic", quantity=4, unit="cloves", category="spice"),
+            Ingredient(name="cumin seeds", quantity=1, unit="tsp", category="spice"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Roast eggplant until charred; peel and mash"),
+            RecipeInstruction(step_number=2, instruction="Sauté onions, garlic, and cumin"),
+            RecipeInstruction(step_number=3, instruction="Add tomatoes and cook down"),
+            RecipeInstruction(step_number=4, instruction="Stir in mashed eggplant and cook 10 minutes"),
+            RecipeInstruction(step_number=5, instruction="Finish with cilantro"),
+        ],
+        dietary_tags=["vegetarian", "vegan", "gluten-free"],
+        nutrition=NutritionInfo(calories=210, protein=5, carbs=22, fat=12, fiber=7, sodium=360)
+    ),
+
+    # Recipe 38: Rogan Josh
+    Recipe(
+        id=uuid4(),
+        title="Rogan Josh",
+        description="Kashmiri-style aromatic lamb curry with yogurt and spices",
+        cuisine_type="Indian",
+        difficulty="medium",
+        prep_time=15,
+        cook_time=45,
+        servings=6,
+        image_url="https://images.unsplash.com/photo-1625943543163-3a7f1f2b5751",
+        ingredients=[
+            Ingredient(name="lamb", quantity=800, unit="g", is_critical=True, category="protein"),
+            Ingredient(name="yogurt", quantity=150, unit="ml", category="dairy"),
+            Ingredient(name="onion", quantity=2, unit="whole", category="vegetable"),
+            Ingredient(name="rogan josh masala", quantity=2, unit="tbsp", category="spice"),
+            Ingredient(name="ginger garlic paste", quantity=1, unit="tbsp", category="spice"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Brown lamb pieces in oil"),
+            RecipeInstruction(step_number=2, instruction="Add onions and sauté"),
+            RecipeInstruction(step_number=3, instruction="Stir in masala and yogurt; cook covered"),
+            RecipeInstruction(step_number=4, instruction="Simmer until tender and gravy thick"),
+            RecipeInstruction(step_number=5, instruction="Rest and serve"),
+        ],
+        dietary_tags=["gluten-free"],
+        nutrition=NutritionInfo(calories=420, protein=35, carbs=10, fat=26, fiber=2, sodium=740)
+    ),
+
+    # Recipe 39: Chicken Chettinad
+    Recipe(
+        id=uuid4(),
+        title="Chicken Chettinad",
+        description="Spicy South Indian chicken curry with roasted spices",
+        cuisine_type="Indian",
+        difficulty="medium",
+        prep_time=15,
+        cook_time=30,
+        servings=5,
+        image_url="https://images.unsplash.com/photo-1589302168068-964664d93dc0",
+        ingredients=[
+            Ingredient(name="chicken", quantity=800, unit="g", is_critical=True, category="protein"),
+            Ingredient(name="onion", quantity=2, unit="whole", category="vegetable"),
+            Ingredient(name="tomato", quantity=2, unit="whole", category="vegetable"),
+            Ingredient(name="chettinad masala", quantity=2, unit="tbsp", category="spice"),
+            Ingredient(name="curry leaves", quantity=1, unit="sprig", category="vegetable"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Roast and grind chettinad spices (if using whole)"),
+            RecipeInstruction(step_number=2, instruction="Sauté onions and curry leaves; add masala"),
+            RecipeInstruction(step_number=3, instruction="Add chicken and tomatoes; cook covered"),
+            RecipeInstruction(step_number=4, instruction="Simmer until chicken is tender"),
+            RecipeInstruction(step_number=5, instruction="Adjust seasoning and serve"),
+        ],
+        dietary_tags=["gluten-free", "dairy-free"],
+        nutrition=NutritionInfo(calories=360, protein=32, carbs=8, fat=22, fiber=2, sodium=640)
+    ),
+
+    # Recipe 40: Goan Fish Curry
+    Recipe(
+        id=uuid4(),
+        title="Goan Fish Curry",
+        description="Tangy coconut-based fish curry with tamarind and spices",
+        cuisine_type="Indian",
+        difficulty="easy",
+        prep_time=10,
+        cook_time=20,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1583336663277-620dc1996580",
+        ingredients=[
+            Ingredient(name="fish fillets", quantity=600, unit="g", is_critical=True, category="protein"),
+            Ingredient(name="coconut milk", quantity=300, unit="ml", is_critical=True, category="other"),
+            Ingredient(name="tamarind", quantity=1, unit="tbsp", category="other"),
+            Ingredient(name="onion", quantity=1, unit="whole", category="vegetable"),
+            Ingredient(name="red chili powder", quantity=1, unit="tsp", category="spice"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Sauté onions with spice powders"),
+            RecipeInstruction(step_number=2, instruction="Add coconut milk and tamarind; bring to simmer"),
+            RecipeInstruction(step_number=3, instruction="Slide in fish; cook until just done"),
+            RecipeInstruction(step_number=4, instruction="Rest 5 minutes for flavors to meld"),
+            RecipeInstruction(step_number=5, instruction="Serve with steamed rice"),
+        ],
+        dietary_tags=["gluten-free", "dairy-free"],
+        nutrition=NutritionInfo(calories=310, protein=28, carbs=8, fat=18, fiber=1, sodium=520)
+    ),
+
+    # Recipe 41: Vegetable Biryani
+    Recipe(
+        id=uuid4(),
+        title="Vegetable Biryani",
+        description="Layered basmati rice with spiced mixed vegetables and fried onions",
+        cuisine_type="Indian",
+        difficulty="medium",
+        prep_time=20,
+        cook_time=35,
+        servings=6,
+        image_url="https://images.unsplash.com/photo-1625943537649-b4b38183b081",
+        ingredients=[
+            Ingredient(name="basmati rice", quantity=500, unit="g", is_critical=True, category="grain"),
+            Ingredient(name="mixed vegetables", quantity=400, unit="g", is_critical=True, category="vegetable"),
+            Ingredient(name="yogurt", quantity=150, unit="ml", category="dairy"),
+            Ingredient(name="biryani masala", quantity=2, unit="tbsp", category="spice"),
+            Ingredient(name="onion", quantity=2, unit="whole", category="vegetable"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Parboil rice with whole spices"),
+            RecipeInstruction(step_number=2, instruction="Cook vegetables with biryani masala and yogurt"),
+            RecipeInstruction(step_number=3, instruction="Layer rice and veggies; top with fried onions"),
+            RecipeInstruction(step_number=4, instruction="Dum cook 15 minutes"),
+            RecipeInstruction(step_number=5, instruction="Fluff and serve"),
+        ],
+        dietary_tags=["vegetarian"],
+        nutrition=NutritionInfo(calories=420, protein=10, carbs=78, fat=8, fiber=5, sodium=680)
+    ),
+
+    # Recipe 42: Rajma Masala
+    Recipe(
+        id=uuid4(),
+        title="Rajma Masala",
+        description="North Indian kidney bean curry with onion-tomato gravy",
+        cuisine_type="Indian",
+        difficulty="easy",
+        prep_time=10,
+        cook_time=35,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1595433562696-cc7f2f9b5f17",
+        ingredients=[
+            Ingredient(name="kidney beans", quantity=500, unit="g", is_critical=True, category="protein"),
+            Ingredient(name="onion", quantity=2, unit="whole", category="vegetable"),
+            Ingredient(name="tomato", quantity=300, unit="g", category="vegetable"),
+            Ingredient(name="rajma masala", quantity=2, unit="tbsp", category="spice"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Cook soaked beans until soft"),
+            RecipeInstruction(step_number=2, instruction="Make onion-tomato masala with spices"),
+            RecipeInstruction(step_number=3, instruction="Combine and simmer 15 minutes"),
+            RecipeInstruction(step_number=4, instruction="Mash a few beans to thicken"),
+            RecipeInstruction(step_number=5, instruction="Serve with steamed rice"),
+        ],
+        dietary_tags=["vegetarian", "vegan", "gluten-free"],
+        nutrition=NutritionInfo(calories=330, protein=15, carbs=55, fat=4, fiber=13, sodium=540)
+    ),
+
+    # Recipe 43: Kadai Paneer
+    Recipe(
+        id=uuid4(),
+        title="Kadai Paneer",
+        description="Stir-fried paneer with bell peppers in a roasted spice gravy",
+        cuisine_type="Indian",
+        difficulty="easy",
+        prep_time=10,
+        cook_time=20,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1625943538989-5a9b2bcb8ecf",
+        ingredients=[
+            Ingredient(name="paneer", quantity=300, unit="g", is_critical=True, category="protein"),
+            Ingredient(name="bell pepper", quantity=2, unit="whole", category="vegetable"),
+            Ingredient(name="onion", quantity=1, unit="whole", category="vegetable"),
+            Ingredient(name="tomato", quantity=2, unit="whole", category="vegetable"),
+            Ingredient(name="kadai masala", quantity=2, unit="tsp", category="spice"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Roast and grind kadai masala (or use ready)"),
+            RecipeInstruction(step_number=2, instruction="Sauté onions and peppers; add tomatoes"),
+            RecipeInstruction(step_number=3, instruction="Stir in masala and paneer; cook briefly"),
+            RecipeInstruction(step_number=4, instruction="Finish with kasuri methi"),
+            RecipeInstruction(step_number=5, instruction="Serve with roti or naan"),
+        ],
+        dietary_tags=["vegetarian", "gluten-free"],
+        nutrition=NutritionInfo(calories=340, protein=17, carbs=18, fat=22, fiber=5, sodium=560)
+    ),
+
+    # Recipe 44: Malai Kofta
+    Recipe(
+        id=uuid4(),
+        title="Malai Kofta",
+        description="Fried paneer-potato dumplings in a rich creamy gravy",
+        cuisine_type="Indian",
+        difficulty="hard",
+        prep_time=25,
+        cook_time=30,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1625943541911-4d9c1f2e1a41",
+        ingredients=[
+            Ingredient(name="paneer", quantity=200, unit="g", is_critical=True, category="protein"),
+            Ingredient(name="potato", quantity=200, unit="g", is_critical=True, category="vegetable"),
+            Ingredient(name="cream", quantity=100, unit="ml", category="dairy"),
+            Ingredient(name="cashew", quantity=40, unit="g", category="other"),
+            Ingredient(name="tomato", quantity=300, unit="g", category="vegetable"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Make kofta mixture from paneer and potato; fry"),
+            RecipeInstruction(step_number=2, instruction="Prepare cashew-tomato cream gravy"),
+            RecipeInstruction(step_number=3, instruction="Add koftas to gravy just before serving"),
+            RecipeInstruction(step_number=4, instruction="Simmer 2 minutes to absorb flavors"),
+            RecipeInstruction(step_number=5, instruction="Garnish with cream"),
+        ],
+        dietary_tags=["vegetarian", "gluten-free"],
+        nutrition=NutritionInfo(calories=480, protein=16, carbs=28, fat=34, fiber=3, sodium=700)
+    ),
+
+    # Recipe 45: Laal Maas
+    Recipe(
+        id=uuid4(),
+        title="Laal Maas",
+        description="Rajasthani hot mutton curry with mathania chilies",
+        cuisine_type="Indian",
+        difficulty="medium",
+        prep_time=15,
+        cook_time=40,
+        servings=5,
+        image_url="https://images.unsplash.com/photo-1617191519400-9db6466b7403",
+        ingredients=[
+            Ingredient(name="mutton", quantity=800, unit="g", is_critical=True, category="protein"),
+            Ingredient(name="yogurt", quantity=120, unit="ml", category="dairy"),
+            Ingredient(name="red chili paste", quantity=2, unit="tbsp", category="spice"),
+            Ingredient(name="garlic", quantity=6, unit="cloves", category="spice"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Marinate mutton with yogurt and chili"),
+            RecipeInstruction(step_number=2, instruction="Sear meat; add garlic and spices"),
+            RecipeInstruction(step_number=3, instruction="Add water and simmer till tender"),
+            RecipeInstruction(step_number=4, instruction="Reduce to thick gravy"),
+            RecipeInstruction(step_number=5, instruction="Rest before serving"),
+        ],
+        dietary_tags=["gluten-free", "dairy"],
+        nutrition=NutritionInfo(calories=450, protein=36, carbs=6, fat=30, fiber=1, sodium=780)
+    ),
+
+    # Recipe 46: Kerala Fish Moilee
+    Recipe(
+        id=uuid4(),
+        title="Kerala Fish Moilee",
+        description="Mild coconut milk fish stew with ginger and green chilies",
+        cuisine_type="Indian",
+        difficulty="easy",
+        prep_time=10,
+        cook_time=20,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1553163147-622ab57be1c7",
+        ingredients=[
+            Ingredient(name="fish fillets", quantity=600, unit="g", is_critical=True, category="protein"),
+            Ingredient(name="coconut milk", quantity=350, unit="ml", is_critical=True, category="other"),
+            Ingredient(name="ginger", quantity=1, unit="tbsp", category="spice"),
+            Ingredient(name="green chili", quantity=2, unit="whole", category="spice"),
+            Ingredient(name="curry leaves", quantity=1, unit="sprig", category="vegetable"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Temper curry leaves, ginger, and chili"),
+            RecipeInstruction(step_number=2, instruction="Add coconut milk; bring to gentle simmer"),
+            RecipeInstruction(step_number=3, instruction="Add fish; cook until flaky"),
+            RecipeInstruction(step_number=4, instruction="Season and serve"),
+            RecipeInstruction(step_number=5, instruction="Optional: finish with coconut oil"),
+        ],
+        dietary_tags=["gluten-free", "dairy-free"],
+        nutrition=NutritionInfo(calories=300, protein=27, carbs=6, fat=18, fiber=1, sodium=480)
+    ),
+
+    # Recipe 47: Paneer Tikka
+    Recipe(
+        id=uuid4(),
+        title="Paneer Tikka",
+        description="Marinated paneer and peppers skewered and roasted",
+        cuisine_type="Indian",
+        difficulty="easy",
+        prep_time=20,
+        cook_time=15,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1617196034796-5f3c2aaca5fa",
+        ingredients=[
+            Ingredient(name="paneer", quantity=350, unit="g", is_critical=True, category="protein"),
+            Ingredient(name="yogurt", quantity=120, unit="ml", category="dairy"),
+            Ingredient(name="tikka masala", quantity=2, unit="tbsp", category="spice"),
+            Ingredient(name="bell pepper", quantity=2, unit="whole", category="vegetable"),
+            Ingredient(name="onion", quantity=1, unit="whole", category="vegetable"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Marinate paneer and veggies in yogurt-masala"),
+            RecipeInstruction(step_number=2, instruction="Skewer and roast/grill until charred"),
+            RecipeInstruction(step_number=3, instruction="Baste with butter or oil midway"),
+            RecipeInstruction(step_number=4, instruction="Sprinkle chaat masala"),
+            RecipeInstruction(step_number=5, instruction="Serve with mint chutney"),
+        ],
+        dietary_tags=["vegetarian", "gluten-free"],
+        nutrition=NutritionInfo(calories=340, protein=20, carbs=12, fat=24, fiber=3, sodium=520)
+    ),
+
+    # Recipe 48: Egg Curry
+    Recipe(
+        id=uuid4(),
+        title="Egg Curry",
+        description="Boiled eggs simmered in onion-tomato gravy",
+        cuisine_type="Indian",
+        difficulty="easy",
+        prep_time=10,
+        cook_time=20,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1615485929964-0f9e66d5645e",
+        ingredients=[
+            Ingredient(name="eggs", quantity=6, unit="whole", is_critical=True, category="protein"),
+            Ingredient(name="onion", quantity=2, unit="whole", category="vegetable"),
+            Ingredient(name="tomato", quantity=2, unit="whole", category="vegetable"),
+            Ingredient(name="garam masala", quantity=1, unit="tsp", category="spice"),
+            Ingredient(name="ginger garlic paste", quantity=1, unit="tbsp", category="spice"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Prepare onion-tomato masala with spices"),
+            RecipeInstruction(step_number=2, instruction="Add water to make gravy; simmer"),
+            RecipeInstruction(step_number=3, instruction="Add halved boiled eggs and simmer 5 minutes"),
+            RecipeInstruction(step_number=4, instruction="Finish with cilantro"),
+            RecipeInstruction(step_number=5, instruction="Serve with rice or roti"),
+        ],
+        dietary_tags=["gluten-free"],
+        nutrition=NutritionInfo(calories=280, protein=18, carbs=10, fat=18, fiber=2, sodium=520)
+    ),
+
+    # Recipe 49: Pindi Chole
+    Recipe(
+        id=uuid4(),
+        title="Pindi Chole",
+        description="Dry-style chickpea curry from Rawalpindi with robust spices",
+        cuisine_type="Indian",
+        difficulty="easy",
+        prep_time=10,
+        cook_time=30,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1626076594271-0f6c4af64a63",
+        ingredients=[
+            Ingredient(name="chickpeas", quantity=500, unit="g", is_critical=True, category="protein"),
+            Ingredient(name="pindi chole masala", quantity=2, unit="tbsp", category="spice"),
+            Ingredient(name="onion", quantity=1, unit="whole", category="vegetable"),
+            Ingredient(name="ginger", quantity=1, unit="tbsp", category="spice"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Cook chickpeas until soft"),
+            RecipeInstruction(step_number=2, instruction="Sauté aromatics; add masala"),
+            RecipeInstruction(step_number=3, instruction="Add chickpeas; cook until dry and coated"),
+            RecipeInstruction(step_number=4, instruction="Finish with slit chilies and ginger juliennes"),
+            RecipeInstruction(step_number=5, instruction="Serve with bhature or puri"),
+        ],
+        dietary_tags=["vegetarian", "vegan", "gluten-free"],
+        nutrition=NutritionInfo(calories=320, protein=14, carbs=46, fat=7, fiber=11, sodium=540)
+    ),
+
+    # Recipe 50: Veg Pulao
+    Recipe(
+        id=uuid4(),
+        title="Veg Pulao",
+        description="Fragrant basmati rice cooked with mixed vegetables and whole spices",
+        cuisine_type="Indian",
+        difficulty="easy",
+        prep_time=10,
+        cook_time=20,
+        servings=4,
+        image_url="https://images.unsplash.com/photo-1605475127380-0f7f3a1d9d4d",
+        ingredients=[
+            Ingredient(name="basmati rice", quantity=300, unit="g", is_critical=True, category="grain"),
+            Ingredient(name="mixed vegetables", quantity=250, unit="g", is_critical=True, category="vegetable"),
+            Ingredient(name="whole spices (bay, cinnamon, cloves)", quantity=1, unit="tbsp", category="spice"),
+            Ingredient(name="ghee", quantity=1, unit="tbsp", category="other"),
+            Ingredient(name="onion", quantity=1, unit="whole", category="vegetable"),
+        ],
+        instructions=[
+            RecipeInstruction(step_number=1, instruction="Sauté whole spices and onions in ghee"),
+            RecipeInstruction(step_number=2, instruction="Add vegetables and rinsed rice; sauté briefly"),
+            RecipeInstruction(step_number=3, instruction="Add water; cook until rice is fluffy"),
+            RecipeInstruction(step_number=4, instruction="Rest 5 minutes before fluffing"),
+            RecipeInstruction(step_number=5, instruction="Garnish with fried onions or nuts"),
+        ],
+        dietary_tags=["vegetarian"],
+        nutrition=NutritionInfo(calories=360, protein=7, carbs=68, fat=7, fiber=4, sodium=420)
+    ),
 ]
 
