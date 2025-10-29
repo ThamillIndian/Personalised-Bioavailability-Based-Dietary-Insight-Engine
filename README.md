@@ -13,9 +13,9 @@
 
 ## 🎯 Project Overview
 
-Smart Recipe Generator is an intelligent cooking assistant that identifies ingredients from photos using AI and suggests personalized recipes with detailed instructions, nutritional information, and smart substitutions.
+Smart Recipe Generator is an intelligent cooking assistant that identifies ingredients from photos using AI and suggests personalized recipes with detailed instructions, nutritional information, and smart substitutions. Now featuring advanced nutrient bioavailability calculations and RDA (Recommended Dietary Allowance) coverage analysis.
 
-**Key Innovation:** Advanced fuzzy-matching algorithm that understands ingredient variations and dietary restrictions to deliver highly relevant recipe suggestions with match percentage scores.
+**Key Innovation:** Advanced fuzzy-matching algorithm that understands ingredient variations and dietary restrictions to deliver highly relevant recipe suggestions with match percentage scores, combined with scientific nutrient bioavailability adjustments based on cooking methods and lifestyle factors.
 
 ---
 
@@ -41,6 +41,25 @@ Smart Recipe Generator is an intelligent cooking assistant that identifies ingre
 - **Advanced filtering:** Cuisine type, difficulty level, cooking time, calories, protein, carbs
 - Real-time filter application with instant results
 
+### 📊 **Nutrient Bioavailability & RDA Analysis** ⭐ NEW
+- **Bioavailability Calculations:**
+  - Adjusts nutrient values based on cooking methods (Raw, Boiled, Steamed, Fried, Baked, Sauteed, Pressure Cooked)
+  - Factors in retention and digestibility scores from scientific databases
+  - Considers lifestyle factors: stress level, age, post-workout status
+  - Optional parameters: sleep hours, meal time, time since last meal, hydration, caffeine, menstrual phase
+  - Loads comprehensive nutrient data from Anuvaad Indian Food Database and Food Composition Database
+- **RDA Coverage Analysis:**
+  - Calculates percentage of Recommended Dietary Allowance met by meal nutrients
+  - Age and gender-specific RDA values from nutritional databases
+  - Color-coded coverage indicators (high/low coverage warnings)
+  - **Smart Recommendations:** Rule-based suggestions for high and medium sources of nutrients with low coverage
+- **Scientific Data Integration:**
+  - Anuvaad Indian Food Database with bioavailability columns
+  - Food Composition Database
+  - Retention factors for various cooking methods
+  - Digestibility scores by food category (Meat, Grains, Dairy, Vegetables)
+  - Comprehensive RDA values database
+
 ### 📚 **Comprehensive Recipe Database**
 - **30+ curated recipes** across diverse cuisines (Indian, Italian, Mexican, Asian, Mediterranean)
 - Complete nutritional information (calories, protein, carbs, fats, fiber)
@@ -53,13 +72,16 @@ Smart Recipe Generator is an intelligent cooking assistant that identifies ingre
 - 🤖 AI chatbot for cooking questions (LangChain + Gemini)
 - ⏲️ Built-in cooking timers with notifications
 - 📝 Auto-generated shopping lists
-- 🔍 Advanced search with debouncing
+- 🔍 Advanced search with debouncing and pagination
+- 📊 Interactive bioavailability calculator with slide-over input panel
+- 🎯 RDA coverage visualization with personalized recommendations
 
 ### 📱 **Mobile-Responsive Design**
 - Mobile-first UI with touch optimization
 - Bottom navigation for thumb-friendly access
 - Skeleton loaders for smooth UX
 - Accessible design (ARIA labels, keyboard navigation)
+- Slide-over panels for nutrition inputs on all screen sizes
 
 ---
 
@@ -83,6 +105,10 @@ Smart Recipe Generator is an intelligent cooking assistant that identifies ingre
 │  │   /upload    │  │   /search    │  │   /message   │         │
 │  │  /analyze    │  │   /match     │  │              │         │
 │  └──────────────┘  └──────────────┘  └──────────────┘         │
+│  ┌──────────────┐  ┌──────────────┐                            │
+│  │  Nutrition   │  │  Nutrition   │                            │
+│  │ /bioavail    │  │ /rda-coverage│                            │
+│  └──────────────┘  └──────────────┘                            │
 └────────────────────────┬────────────────────────────────────────┘
                          │
 ┌────────────────────────▼────────────────────────────────────────┐
@@ -91,9 +117,13 @@ Smart Recipe Generator is an intelligent cooking assistant that identifies ingre
 │  │  Gemini Vision │  │ Recipe Matcher │  │   LangChain    │   │
 │  │  AI Service    │  │ Fuzzy Algorithm│  │  Chatbot AI    │   │
 │  └────────────────┘  └────────────────┘  └────────────────┘   │
+│  ┌────────────────┐  ┌────────────────┐  ┌────────────────┐   │
+│  │ Substitution   │  │  Spoonacular   │  │   Nutrient    │   │
+│  │    Service     │  │  Integration   │  │  Calculator   │   │
+│  └────────────────┘  └────────────────┘  └────────────────┘   │
 │  ┌────────────────┐  ┌────────────────┐                       │
-│  │ Substitution   │  │  Spoonacular   │                       │
-│  │    Service     │  │  Integration   │                       │
+│  │ Bioavailability│  │   RDA Service  │                       │
+│  │    Service     │  │  + Recomms     │                       │
 │  └────────────────┘  └────────────────┘                       │
 └────────────────────────┬────────────────────────────────────────┘
                          │
@@ -115,8 +145,9 @@ Smart Recipe Generator is an intelligent cooking assistant that identifies ingre
 |-------|-------------|
 | **Frontend** | Next.js 15, React 19, TypeScript, Tailwind CSS, shadcn/ui |
 | **Backend** | FastAPI, Python 3.11+, Pydantic, Uvicorn |
+| **Data Processing** | Pandas, NumPy, Openpyxl for nutrient databases |
 | **AI/ML** | Google Gemini Vision API, LangChain, Gemini Pro |
-| **Database** | Supabase (PostgreSQL), JSON data store |
+| **Database** | Supabase (PostgreSQL), JSON data store, CSV/Excel nutrient databases |
 | **Deployment** | Vercel (Frontend), Render (Backend) |
 | **APIs** | Spoonacular API (optional), Google AI Platform |
 
@@ -188,16 +219,28 @@ project/
 │   │   │   ├── ingredients.py   # Image upload & analysis
 │   │   │   ├── recipes.py       # Recipe search & matching
 │   │   │   ├── favorites.py     # User favorites
-│   │   │   └── chat.py          # AI chatbot
+│   │   │   ├── chat.py          # AI chatbot
+│   │   │   └── nutrition.py    # Bioavailability & RDA
 │   │   ├── services/            # Business logic
 │   │   │   ├── gemini_service.py       # AI vision
 │   │   │   ├── recipe_matcher.py       # Fuzzy matching
 │   │   │   ├── substitution_service.py # Ingredient swaps
-│   │   │   └── langchain_service.py    # Chatbot AI
+│   │   │   ├── langchain_service.py    # Chatbot AI
+│   │   │   ├── nutrient_calculator.py  # Base nutrient calculation
+│   │   │   ├── bioavailability_service.py # Nutrient adjustments
+│   │   │   ├── rda_service.py   # RDA coverage calculation
+│   │   │   └── recommendation_service.py # Food suggestions
 │   │   ├── models/              # Database models
 │   │   ├── schemas/             # Pydantic schemas
+│   │   │   ├── nutrition_schema.py # Bioavailability & RDA schemas
 │   │   └── utils/               # Error handlers, validators
-│   ├── data/                    # 30+ recipe database
+│   ├── data/                    # Recipe & nutrition databases
+│   │   ├── seed_recipes.py     # 100+ recipe database
+│   │   ├── Anuvaad_INDB_2024.11_with_bioavailability_columns.xlsx
+│   │   ├── Food Composition.csv
+│   │   ├── retention_factors.csv
+│   │   ├── digestibility_scores.csv
+│   │   └── rda_values.csv
 │   ├── requirements.txt
 │   └── tests/
 │
@@ -209,6 +252,7 @@ project/
     ├── components/
     │   ├── recipe/             # Recipe cards, details
     │   ├── chat/               # AI chatbot UI
+    │   ├── nutrition/          # Bioavailability panel
     │   └── ui/                 # shadcn components
     ├── lib/
     │   ├── api.ts              # API client
@@ -225,6 +269,10 @@ I architected a full-stack solution prioritizing intelligent recipe matching and
 **AI Integration:** Google Gemini Vision API powers ingredient recognition with preprocessing pipelines (image validation, compression, format conversion) ensuring optimal accuracy. The system handles confidence scoring and duplicate detection automatically.
 
 **Core Innovation - Fuzzy Matching Algorithm:** Developed a sophisticated scoring system that calculates recipe relevance using weighted matches (exact: 1.0, fuzzy: 0.8), critical ingredient penalties (-20 points), and dietary multipliers. String similarity algorithms (70% threshold) handle variations like "chicken breast" vs "chicken," producing transparent match percentages that guide user decisions.
+
+**Nutrient Bioavailability Engine:** Implemented scientific nutrient adjustment calculations based on cooking methods, retention factors, and digestibility scores. The system integrates comprehensive food composition databases (Anuvaad Indian Food Database, Food Composition Database) to calculate base nutrients, then applies cooking method-specific retention factors and category-based digestibility adjustments. Lifestyle factors like stress, age, and post-workout status further fine-tune bioavailability calculations.
+
+**RDA Coverage & Recommendations:** RDA calculation engine determines nutrient coverage percentages using age and gender-specific Recommended Dietary Allowance values. The system identifies nutrients with low coverage (<50%) and provides rule-based food suggestions from curated high and medium sources, helping users meet their nutritional needs.
 
 **Smart Substitutions:** AI-powered substitution service suggests alternatives with ratios and preparation notes, making recipes adaptable to available ingredients.
 
@@ -251,8 +299,8 @@ I architected a full-stack solution prioritizing intelligent recipe matching and
 
 ## 📈 Project Statistics
 
-- ✅ **30 Recipes** (150% of minimum requirement)
-- ✅ **15+ API Endpoints** with full OpenAPI documentation
+- ✅ **100+ Recipes** (extensive Indian cuisine database)
+- ✅ **20+ API Endpoints** with full OpenAPI documentation
 - ✅ **50+ React Components** with TypeScript
 - ✅ **13+ Dietary Filters** (Vegetarian, Vegan, Keto, Paleo, etc.)
 - ✅ **Mobile Responsive** with touch optimization
@@ -265,7 +313,9 @@ I architected a full-stack solution prioritizing intelligent recipe matching and
 - 🤖 **AI Chatbot** - LangChain-powered cooking assistant with memory
 - ⏲️ **Cooking Timers** - Built-in timers with browser notifications
 - 📝 **Shopping Lists** - Auto-generated from recipe ingredients
-- 🔍 **Advanced Search** - Real-time filtering with debouncing
+- 🔍 **Advanced Search** - Real-time filtering with debouncing and pagination
+- 📊 **Nutrient Bioavailability Calculator** - Scientific nutrient adjustments based on cooking methods and lifestyle
+- 🎯 **RDA Coverage Analysis** - Personalized dietary allowance tracking with food recommendations
 - 💾 **Local Caching** - Improved performance and offline support
 - 📱 **PWA Ready** - Progressive Web App capabilities
 
